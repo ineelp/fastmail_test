@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "dev": "nodemon index.js | pino-pretty"
+    "dev": "nodemon node index.js | pino-pretty"
   },
   "keywords": [],
   "author": "",

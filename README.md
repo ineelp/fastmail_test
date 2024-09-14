@@ -47,3 +47,6 @@ Runs the application is development mode. Should not be used in production
 ```shell
 npm run dev
 ```
+
+`NOTE:` Command-line arguments doesn't work well with `pino-pretty` when it is used with `nodemon`
+ Instead use this command e.g: `node index.js "pink white" | npx pino-pretty`
