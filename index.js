@@ -1,7 +1,7 @@
 const axios = require("axios");
 const logger = require("./logger");
 
-async function fetchImageNames() {
+async function fetchImageNames(tagColor = "") {
   try {
     const response = await axios.get(
       "http://frontendtest.jobs.fastmail.com.user.fm/data.json"
@@ -11,14 +11,18 @@ async function fetchImageNames() {
       const data = response.data;
 
       if (data.images && data.images.length > 0) {
-        const imageNames = data.images.map((image) => image.name);
-        logger.info("Image Names:", imageNames);
+        const filteredImages = data.images.filter((image) =>
+          image.tags.includes(tagColor.toLowerCase())
+        );
+        const imageNames = filteredImages.map((image) => image.name);
 
-        if (imageNames.length === data.images.length) {
-          logger.info("All images have been fetched successfully.");
+        logger.info("Filtered Image Names:", imageNames);
+
+        if (imageNames.length === filteredImages.length) {
+          logger.info("All images matching the search term have been fetched successfully.");
         } else {
           logger.error(
-            `Mismatch in image count: Expected ${data.images.length}, but only fetched ${imageNames.length}`
+            `Mismatch in image count: Expected ${filteredImages.length}, but only fetched ${imageNames.length}`
           );
         }
       } else {
@@ -31,4 +35,5 @@ async function fetchImageNames() {
     logger.error("Error fetching:", error);
   }
 }
-fetchImageNames();
+
+fetchImageNames("pink");
