@@ -4,7 +4,7 @@ const logger = require("./logger");
 const api_end_point = "http://frontendtest.jobs.fastmail.com.user.fm/data.json";
 
 // Fetch and log image names
-async function fetchImageNames(filterString = "") {
+async function fetchImagesWithFilters(filterString = "") {
   logger.info(`Received filter tags: ${filterString}`);
 
   const data = await fetchData();
@@ -80,4 +80,4 @@ function filterImages(images, filterGroups) {
   );
 }
 
-module.exports = fetchImageNames;
+module.exports = fetchImagesWithFilters;
