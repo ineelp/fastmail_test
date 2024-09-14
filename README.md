@@ -1,6 +1,6 @@
 # fastmail_test
 
-This project is a simple Node.js application that uses `axios` to fetch data from an API endpoint and outputs the names of images from the response.
+This project is a simple Node.js application that uses `axios` to fetch data from an API endpoint and allows users to filter images based on color tags and orientation.
 
 ## Project Overview
 
